@@ -15,6 +15,9 @@ window.onload = function () {
         currentInput = "";
         display.innerHTML = "";
         history.innerHTML = "";
+      } else if (value === "←") {
+        currentInput = currentInput.slice(0, -1);
+        display.innerHTML = currentInput;
       } else currentInput += value;
 
       display.innerHTML = currentInput;
