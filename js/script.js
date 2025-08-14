@@ -11,6 +11,10 @@ window.onload = function () {
       if (value === "=") {
         history.innerHTML = currentInput + " =";
         currentInput = eval(currentInput).toString();
+      } else if (value === "C") {
+        currentInput = "";
+        display.innerHTML = "";
+        history.innerHTML = "";
       } else currentInput += value;
 
       display.innerHTML = currentInput;
