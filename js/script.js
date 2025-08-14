@@ -4,21 +4,29 @@ window.onload = function () {
   let buttons = document.getElementsByTagName("button");
 
   let currentInput = "";
-
+  let afterEqual = false;
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].onclick = function () {
       let value = this.innerHTML;
       if (value === "=") {
         history.innerHTML = currentInput + " =";
         currentInput = eval(currentInput).toString();
+        afterEqual = true;
       } else if (value === "C") {
         currentInput = "";
         display.innerHTML = "";
         history.innerHTML = "";
+        afterEqual = false;
       } else if (value === "←") {
         currentInput = currentInput.slice(0, -1);
         display.innerHTML = currentInput;
-      } else currentInput += value;
+      } else {
+        if (afterEqual) {
+          currentInput = "";
+          afterEqual = false;
+        }
+        currentInput += value;
+      }
 
       display.innerHTML = currentInput;
     };
